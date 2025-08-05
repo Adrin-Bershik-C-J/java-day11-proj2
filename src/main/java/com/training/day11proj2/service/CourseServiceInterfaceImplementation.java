@@ -1,27 +1,22 @@
 package com.training.day11proj2.service;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import com.training.day11proj2.dto.CourseDTO;
 import com.training.day11proj2.entity.Course;
 import com.training.day11proj2.repository.CourseRepository;
 
 @Service
 public class CourseServiceInterfaceImplementation implements CourseServiceInterface {
+
     @Autowired
     private CourseRepository courseRepository;
 
     @Override
     public Course createCourse(Course course) {
         return courseRepository.save(course);
-    }
-
-    @Override
-    public Optional<Course> getCourseById(Long id) {
-        return courseRepository.findById(id);
     }
 
     @Override
@@ -42,5 +37,12 @@ public class CourseServiceInterfaceImplementation implements CourseServiceInterf
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @Override
+    public CourseDTO getCourseDTOById(Long id) {
+        Course c = courseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Course not found"));
+        return new CourseDTO(c.getCourseId(), c.getTitle(), c.getDescription());
     }
 }

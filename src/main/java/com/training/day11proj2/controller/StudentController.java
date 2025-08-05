@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.training.day11proj2.dto.StudentDTO;
 import com.training.day11proj2.entity.Student;
 import com.training.day11proj2.service.StudentServiceInterface;
 
@@ -27,11 +28,6 @@ public class StudentController {
         return studentService.createStudent(student);
     }
 
-    @GetMapping("/{id}")
-    public Optional<Student> getStudentById(@PathVariable Long id) {
-        return studentService.getStudentById(id);
-    }
-
     @PutMapping("/{id}")
     public Optional<Student> updateStudentDetails(@PathVariable Long id, @RequestBody Student student) {
         return studentService.updateStudentDetails(id, student);
@@ -41,4 +37,10 @@ public class StudentController {
     public ResponseEntity<Optional<Student>> deleteStudent(@PathVariable Long id) {
         return studentService.deleteStudent(id);
     }
+
+    @GetMapping("/{id}")
+    public StudentDTO getStudentDTOById(@PathVariable Long id) {
+        return studentService.getStudentDTOById(id);
+    }
+
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.training.day11proj2.dto.CourseDTO;
 import com.training.day11proj2.entity.Course;
 import com.training.day11proj2.service.CourseServiceInterface;
 
@@ -27,11 +28,6 @@ public class CourseController {
         return courseService.createCourse(course);
     }
 
-    @GetMapping("/{id}")
-    public Optional<Course> getCourseById(@PathVariable Long id) {
-        return courseService.getCourseById(id);
-    }
-
     @PutMapping("/{id}")
     public Optional<Course> updateCourseDetails(@PathVariable Long id, @RequestBody Course course) {
         return courseService.updateCourseDetails(id, course);
@@ -41,4 +37,10 @@ public class CourseController {
     public ResponseEntity<Optional<Course>> deleteCourse(@PathVariable Long id) {
         return courseService.deleteCourse(id);
     }
+
+    @GetMapping("/{id}")
+    public CourseDTO getCourseDTOById(@PathVariable Long id) {
+        return courseService.getCourseDTOById(id);
+    }
+
 }

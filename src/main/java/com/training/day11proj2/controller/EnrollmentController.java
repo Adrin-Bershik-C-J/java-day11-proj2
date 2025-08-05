@@ -3,13 +3,9 @@ package com.training.day11proj2.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import com.training.day11proj2.dto.EnrollmentDTO;
 import com.training.day11proj2.entity.Enrollment;
 import com.training.day11proj2.service.EnrollmentServiceInterface;
 
@@ -26,12 +22,12 @@ public class EnrollmentController {
     }
 
     @GetMapping
-    public List<Enrollment> getAllEnrollments() {
-        return enrollmentServiceInterface.getAllEnrollments();
+    public List<EnrollmentDTO> getAllEnrollments() {
+        return enrollmentServiceInterface.getAllEnrollmentsDTO();
     }
 
     @GetMapping("/student/{studentId}")
-    public List<Enrollment> getCoursesByStudent(@PathVariable Long studentId) {
+    public List<EnrollmentDTO> getCoursesByStudent(@PathVariable Long studentId) {
         return enrollmentServiceInterface.getCoursesByStudentId(studentId);
     }
 
