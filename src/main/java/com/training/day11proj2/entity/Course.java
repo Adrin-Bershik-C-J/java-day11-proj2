@@ -14,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long courseId;
@@ -23,4 +24,5 @@ public class Course {
 
     @OneToMany(mappedBy = "course")
     private List<Enrollment> enrollments;
+    
 }

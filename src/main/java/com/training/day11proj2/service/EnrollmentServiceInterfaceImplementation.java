@@ -21,7 +21,6 @@ public class EnrollmentServiceInterfaceImplementation implements EnrollmentServi
         return enrollmentRepository.save(enrollment);
     }
 
-    // ✅ Convert to DTO
     @Override
     public List<EnrollmentDTO> getAllEnrollmentsDTO() {
         return enrollmentRepository.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
@@ -34,7 +33,6 @@ public class EnrollmentServiceInterfaceImplementation implements EnrollmentServi
                 .collect(Collectors.toList());
     }
 
-    // ✅ Helper method to convert Entity → DTO
     private EnrollmentDTO mapToDTO(Enrollment e) {
         return new EnrollmentDTO(
                 e.getEnrollmentId(),
@@ -45,4 +43,5 @@ public class EnrollmentServiceInterfaceImplementation implements EnrollmentServi
                 e.getCourse().getTitle(),
                 e.getCourse().getDescription());
     }
+    
 }

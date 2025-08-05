@@ -45,4 +45,5 @@ public class StudentServiceImplementation implements StudentServiceInterface {
                 .orElseThrow(() -> new RuntimeException("Student not found"));
         return new StudentDTO(s.getStudentId(), s.getName(), s.getEmail());
     }
+    
 }

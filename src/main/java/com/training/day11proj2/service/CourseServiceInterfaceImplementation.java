@@ -45,4 +45,5 @@ public class CourseServiceInterfaceImplementation implements CourseServiceInterf
                 .orElseThrow(() -> new RuntimeException("Course not found"));
         return new CourseDTO(c.getCourseId(), c.getTitle(), c.getDescription());
     }
+    
 }

@@ -7,7 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-
 public class CourseDTO {
 
     private Long courseId;

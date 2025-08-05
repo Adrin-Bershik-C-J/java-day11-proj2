@@ -20,6 +20,7 @@ import com.training.day11proj2.service.CourseServiceInterface;
 @RestController
 @RequestMapping("/api/course")
 public class CourseController {
+
     @Autowired
     private CourseServiceInterface courseService;
 
